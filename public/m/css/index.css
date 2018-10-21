@@ -1,0 +1,18 @@
+li {
+  list-style: none;
+}
+.mui-content {
+  background-color: #fff;
+}
+.nav-links {
+  padding: 10px;
+}
+.nav-links a {
+  float: left;
+  width: 33.3%;
+}
+.nav-links a img {
+  width: 100%;
+  display: block;
+}
+/*# sourceMappingURL=index.css.map */
