@@ -15,4 +15,65 @@ li {
   width: 100%;
   display: block;
 }
+.brand {
+  padding: 10px;
+}
+.brand img {
+  width: 100%;
+}
+.brand ul {
+  padding: 0px;
+}
+.brand ul li {
+  float: left;
+  width: 25%;
+}
+.brand ul li img {
+  width: 100%;
+}
+.product {
+  padding: 10px;
+}
+.product > img {
+  width: 100%;
+}
+.product > ul {
+  padding: 0px;
+}
+.product > ul > li {
+  width: 50%;
+  float: left;
+  padding: 5px;
+}
+.product > ul > li > a {
+  text-align: center;
+  display: block;
+  padding: 5px;
+  box-shadow: 0 0 5px #cccccc;
+}
+.product > ul > li > a > img {
+  width: 100%;
+}
+.product > ul > li > a > span {
+  display: block;
+  text-align: center;
+  padding: 6px;
+  font-size: 16px;
+  color: #8f8f94;
+}
+.product > ul > li > a > p {
+  font-size: 12px;
+  padding: 5px;
+  text-align: center;
+}
+.product > ul > li > a > p > span:first-of-type {
+  color: #f30;
+}
+.product > ul > li > a > p > span:last-of-type {
+  text-decoration: line-through;
+}
+.product > ul > li > a > button {
+  background: #006699;
+  color: white;
+}
 /*# sourceMappingURL=index.css.map */

@@ -16,3 +16,65 @@ li {
     }
   }
 }
+.brand {
+  padding: 10px;
+  img {
+    width: 100%;
+  }
+  ul {
+    padding: 0px;
+    li {
+      float: left;
+      width: 25%;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+.product {
+  padding: 10px;
+  >img {
+    width: 100%;
+  }
+  >ul {
+    padding: 0px;
+    >li {
+      width: 50%;
+      float: left;
+      padding: 5px;
+      >a {
+        text-align: center;
+        display: block;
+        padding: 5px;
+        box-shadow: 0 0 5px #cccccc;
+        >img {
+          width: 100%;
+        }
+        >span {
+          display: block;
+          text-align: center;
+          padding: 6px;
+          font-size: 16px;
+          color: #8f8f94;
+        }
+        >p {
+          font-size: 12px;
+          padding: 5px;
+          text-align: center;
+          >span:first-of-type {
+            color: #f30;
+          }
+          >span:last-of-type {
+            text-decoration: line-through;
+          }
+        }
+        >button {
+          //margin: 5px auto;
+          background: #006699;
+          color: white;
+        }
+      }
+    }
+  }
+}
