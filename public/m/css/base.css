@@ -23,3 +23,6 @@
 .my-footer .mui-tab-item.mui-active {
 	color: darkorange;
 }
+li {
+	list-style:none;
+}
