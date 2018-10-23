@@ -8,17 +8,13 @@
     <link rel="stylesheet" href="assets/mui/css/mui.min.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="assets/fontAwesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/category.css">
+    <link rel="stylesheet" href="css/search.css">
     <script src="assets/mui/js/mui.min.js"></script>
-    <script src="assets/zepto/zepto.min.js"></script>
-    <script src="assets/art-template/template-web.js"></script>
-    <script src="js/category.js"></script>
 </head>
 <body>
 <header class="mui-bar mui-bar-nav my-header">
     <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white"></a>
-    <h1 class="mui-title">网络购物</h1>
-    <a href="" class="mui-icon mui-icon-search mui-pull-right"></a>
+    <h1 class="mui-title">搜索中心</h1>
 </header>
 <nav class="mui-bar mui-bar-tab my-footer">
     <a class="mui-tab-item mui-active" href="index.html">
@@ -38,41 +34,28 @@
         <span class="mui-tab-label">会员中心</span>
     </a>
 </nav>
-<div class="content">
-    <div class="content_left">
-        <div class="mui-scroll-wrapper">
-            <div class="mui-scroll">
-                <div class="links" id='list-data'>
-                </div>
-            </div>
+<div class="mui-content">
+    <!--搜索框-->
+    <div class="search-top">
+        <input type="text" placeholder="请搜索你喜欢的商品">
+        <input type="button" value="搜索">
+    </div>
+    <!--历史记录-->
+    <div class="history mui-clearfix">
+        <span class="history-left mui-pull-left">搜索历史</span>
+        <div class="history-right mui-pull-right">
+            <span class="mui-icon mui-icon-trash"></span>
+            <span>删除历史</span>
         </div>
     </div>
-    <div class="content_right">
-        <div class="mui-scroll-wrapper">
-            <div class="mui-scroll">
-                <ul class="mui-clearfix" id="right-data">
-                </ul>
-            </div>
-        </div>
+    <!--内容列表-->
+    <div class="history-content">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">Item 1</li>
+            <li class="mui-table-view-cell">Item 2</li>
+            <li class="mui-table-view-cell">Item 3</li>
+        </ul>
     </div>
 </div>
-<script id="lef_data" type="text/html">
-    {{each rows value }}
-    <a href="javascript:;" data-id={{value.id}}>{{value.categoryName}}</a>
-    {{/each}}
-</script>
-<script id='brand-data' type="text/html">
-    {{each rows value }}
-    <li>
-        <a href="javascript:;">
-            <img src="{{value.brandLogo}}">
-            <p>{{value.brandName}}</p>
-        </a>
-    </li>
-    {{/each}}
-    {{if !rows.length}}
-    <div class="message">暂无数据</div>
-    {{/if}}
-</script>
 </body>
 </html>
