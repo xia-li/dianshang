@@ -51,4 +51,17 @@
   font-size: 14px;
   text-align: center;
 }
+.content .content_left .links > a {
+  color: black;
+  display: block;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  border-right: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+}
+.content .content_left .content_right {
+  flex: 1;
+  position: relative;
+}
 /*# sourceMappingURL=category.css.map */
