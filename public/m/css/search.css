@@ -1,0 +1,26 @@
+.search-top {
+  display: flex;
+  padding: 10px;
+}
+.search-top > input:first-of-type {
+  font-size: 14px;
+  flex: 1;
+  height: 28px;
+  margin: 0px;
+  border-radius: 0px;
+  border: 1px solid #006699;
+}
+.search-top > input:last-of-type {
+  color: white;
+  width: 60px;
+  height: 28px;
+  background-color: #006699;
+  border-radius: 0px;
+  border: none;
+}
+.history {
+  padding: 10px;
+  font-size: 14px;
+  color: #8f8f94;
+}
+/*# sourceMappingURL=search.css.map */
