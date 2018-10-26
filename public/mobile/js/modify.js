@@ -1,17 +1,26 @@
 $(function(){
 
-	$('#modifyBtn').on('tap',function(){
+	/**
+	 * 修改密码
+	 * 1.获取修改密码按钮并添加点击事件
+	 * 2.获取用户输入的信息
+	 * 3.对用户输入的信息做校验
+	 * 4.调用修改密码接口 实现修改密码功能
+	 * 5.跳转到登录页面 重新登录
+	 */
+	
+	$('#modify-btn').on('tap', function(){
 
-		var This = $(this);
+		// 原密码
+		var originPass = $.trim($("[name='originPass']").val());
+		// 新密码
+		var newPass = $.trim($("[name='newPass']").val());
+		// 确认新密码
+		var confirmNewPass = $.trim($("[name='confirmNewPass']").val());
+		// 认证码
+		var vCode = $.trim($("[name='vCode']").val());
 
-		var data = {
-			oldPassword:$.trim($('[name="originPass"]').val()),
-			newPassword:$.trim($('[name="newPass"]').val()),
-			reNewPassword:$.trim($('[name="sureNewPass"]').val()),
-			vCode:$.trim($('[name="checkCode"]').val())
-		};
-
-		if(!data.oldPassword){
+		if(!originPass){
 
 			mui.toast('请输入原密码');
 
@@ -19,75 +28,35 @@ $(function(){
 
 		}
 
-		if(!data.newPassword){
+		if(newPass != confirmNewPass){
 
-			mui.toast('请输入新密码');
-
-			return;
-
-		}
-
-
-		if(!data.reNewPassword){
-
-			mui.toast('请输入确认新密码');
+			mui.toast('两次输入的密码不一致');
 
 			return;
 
 		}
 
-		if(data.newPassword != data.reNewPassword){
-
-			mui.toast('密码两次输入的不一样');
-
-			return;
-
-		}
-
-		if(!/^\d{6}$/.test(data.vCode)){
-
-			mui.toast('验证码的格式不符合要求');
-
-			return;
-
-		}
-
-
+		// 发送修改密码请求
 		$.ajax({
-			url:'/user/updatePassword',
-			type:'post',
-			data:data,
-			beforeSend:function(){
-
-				This.html('正在修改密码');
-
+			url: '/user/updatePassword',
+			type: 'post',
+			data: {
+				oldPassword: originPass,
+				newPassword: newPass,
+				vCode: vCode
 			},
-			success:function(data){
+			success: function(res){
 
-				if(data.success){
+				if(res.success){
 
-					location.href = "login.html";
+					mui.toast("修改密码成功");
 
-				}else{
+					setTimeout(function(){
+						location.href = "login.html";
+					},2000)
 
-					This.html('修改密码');
-
-					mui.toast('密码修改失败:'+data.message);
-
-					if(data.error == 400){
-
-						localStorage.setItem('returnUrl',location.href);
-
-						setTimeout(function(){
-
-							location.href = "login.html";
-
-						},2000)
-
-					}
-
-				}		
-
+				}
+			
 			}
 		})
 
@@ -95,7 +64,21 @@ $(function(){
 
 	});
 
+	/**
+	 * 获取认证码
+	 */
+	
+	$('#getCode').on('tap', function(){
 
-	$('#getCheckCode').on('tap',getCheckCode);
+		$.ajax({
+			url: '/user/vCodeForUpdatePassword',
+			type: 'get',
+			success: function(res){
+				// 将认证码显示在控制台中
+				console.log(res.vCode);
+			}
+		})
 
-})
+	});
+
+});

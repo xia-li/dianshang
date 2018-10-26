@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="assets/fontAwesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/search.css">
     <script src="assets/mui/js/mui.min.js"></script>
+    <script src="assets/zepto/zepto.min.js"></script>
+    <script src="assets/art-template/template-web.js"></script>
+    <script src="js/search.js"></script>
 </head>
 <body>
 <header class="mui-bar mui-bar-nav my-header">
@@ -38,24 +41,27 @@
     <!--搜索框-->
     <div class="search-top">
         <input type="text" placeholder="请搜索你喜欢的商品">
-        <input type="button" value="搜索">
+        <input type="button" value="搜索" id="search-btn">
     </div>
     <!--历史记录-->
     <div class="history mui-clearfix">
         <span class="history-left mui-pull-left">搜索历史</span>
-        <div class="history-right mui-pull-right">
+        <div class="history-right mui-pull-right" id="clearHistory">
             <span class="mui-icon mui-icon-trash"></span>
-            <span>删除历史</span>
+            <span >删除历史</span>
         </div>
     </div>
     <!--内容列表-->
-    <div class="history-content">
-        <ul class="mui-table-view">
-            <li class="mui-table-view-cell">Item 1</li>
-            <li class="mui-table-view-cell">Item 2</li>
-            <li class="mui-table-view-cell">Item 3</li>
+    <div class="mui-content">
+        <ul class="mui-table-view" id="searchList">
+
         </ul>
     </div>
 </div>
+<script id="searchData" type="text/html">
+    {{each list value}}
+    <li class="mui-table-view-cell">{{value}}</li>
+    {{/each}}
+</script>
 </body>
 </html>

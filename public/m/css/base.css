@@ -1,4 +1,8 @@
 /* 公共样式 */
+body{
+	background:#FFF;
+	font-size:14px;
+}
 ul {
 	padding: 0px;
 }

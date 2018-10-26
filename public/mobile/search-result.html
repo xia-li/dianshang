@@ -6,24 +6,23 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="assets/mui/css/mui.min.css">
 	<link rel="stylesheet" href="css/base.css">
-	<link rel="stylesheet" href="css/category.css">
+	<link rel="stylesheet" href="css/search-result.css">
 	<script src="assets/mui/js/mui.min.js"></script>
 	<script src="assets/zepto/zepto.min.js"></script>
 	<script src="assets/artTemplate/template-native.js"></script>
-	<script src="js/category.js"></script>
 	<script src="js/public.js"></script>
+	<script src="js/search-result.js"></script>
 </head>
 <body>
 	<header class="mui-bar mui-bar-nav my-header">
-		<h1 class="mui-title">乐淘云购</h1>
-		<a href="search.html" class="mui-icon mui-icon-search mui-pull-right"></a>
+		<h1 class="mui-title">搜索结果</h1>
 	</header>
 	<nav class="mui-bar mui-bar-tab my-footer">
-		<a class="mui-tab-item" href="index.html">
+		<a class="mui-tab-item mui-active" href="index.html">
 			<span class="mui-icon mui-icon-home"></span>
 			<span class="mui-tab-label">首页</span>
 		</a>
-		<a class="mui-tab-item mui-active" href="category.html">
+		<a class="mui-tab-item" href="category.html">
 			<span class="mui-icon mui-icon-bars"></span>
 			<span class="mui-tab-label">分类</span>
 		</a>
@@ -36,47 +35,40 @@
 			<span class="mui-tab-label">会员中心</span>
 		</a>
 	</nav>
-	<div class="my-content">
-		<div class="category-left">
-			<div class="mui-scroll-wrapper">
-				<div class="mui-scroll">
-					<div class="links" id="links">
-						
-					</div>
+	<div id="refreshContainer">
+		<div>
+			<div class="mui-row filter">
+				<div class="mui-col-xs-6" id="priceSort">
+					价格
+					<span class="mui-icon mui-icon-arrowdown"></span>
+				</div>
+				<div class="mui-col-xs-6">
+				   销量
+				   <span class="mui-icon mui-icon-arrowdown"></span>
 				</div>
 			</div>
-		</div>
-		<div class="category-right">
-			<div class="mui-scroll-wrapper">
-				<div class="mui-scroll">
-					<ul class="brand-list mui-clearfix">
-						
-					</ul>
-				</div>
+			<div class="product">
+				<ul class="mui-clearfix" id="search-box">
+					
+				</ul>
 			</div>
 		</div>
 	</div>
-
-	<script id="category-first" type="text/template">
-		<% for(var i=0;i<result.length;i++){ %>
-			<a
-				href="#"
-				data-id="<%=result[i].id %>"><%=result[i].categoryName %></a>
-		<% } %>
-	</script>
-
-	<script id="category-second" type="text/template">
-		<% for(var i=0;i<rows.length;i++){ %>
+	<script id="searchTpl" type="text/template">
+		<% for(var i=0;i<data.length;i++){ %>
 			<li>
-				<a href="#">
-					<img src="<%=rows[i].brandLogo %>">
-					<p><%=rows[i].brandName %></p>
+				<a href="detail.html?id=<%=data[i].id %>">
+					<img src="<%=data[i].pic[0].picAddr %>">
+					<span class="name">
+						<%=data[i].proName %>
+					</span>
+					<p>
+						<span>¥<%=data[i].price %></span>
+						<span>¥<%=data[i].oldPrice %></span>
+					</p>
+					<span class="buy-now">立即购买</span>
 				</a>
 			</li>
-		<% } %>
-
-		<% if(!rows.length){ %>
-			<div class="noresult">暂无数据</div>
 		<% } %>
 	</script>
 </body>

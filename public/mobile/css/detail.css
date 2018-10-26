@@ -1,90 +1,102 @@
-.detail-title{
-	padding:10px;
-	font-size:16px;
+.mui-slider img {
+	vertical-align: top;
 }
 
-.detail-price{
-	padding:10px;
-	border-top:1px solid #ccc;
-	border-bottom:1px solid #ccc;
-	font-size:14px;
+.product-title {
+	font-size: 16px;
+	padding: 10px;
 }
 
-.detail-price .new{
+.price {
+	padding: 10px;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	font-size: 14px;
+}
+
+.price .now {
 	font-size: 24px;
 	color: #ea543d;
-	padding-right:10px;
 }
 
-.detail-price .old{
-	color:#ccc;
-	text-decoration:line-through;
+.price .old {
+	color: #ccc;
+	text-decoration: line-through;
+	padding-left: 10px;
 }
 
-.detail-size{
-	padding:10px;
-	border-bottom:1px solid #ccc;
+.size {
+	padding: 10px;
+	font-size: 14px;
 }
 
-.detail-size span{
-	display:inline-block;
-	width:28px;
-	height:28px;
-	border:1px solid #ccc;
-	line-height:28px;
-	text-align:center;
-	margin-right:10px;
-	margin-bottom:10px;
+.size span {
+	display: inline-block;
+	width: 28px;
+	height: 28px;
+	line-height: 28px;
+	text-align: center;
+	border: 1px solid #ccc;
+	margin-bottom: 10px;
 }
 
-.detail-size span.active{
-	background:#fa672d;
-	color:#FFF;
+.size .active {
+	color: #FFF;
+	background: #fa672d;
 }
 
-.detail-num{
-	padding:10px;
+.num {
+	padding: 10px;
+	overflow: hidden;
+	font-size: 14px;
+	line-height: 28px;
+	border-top: 1px solid #ccc;
 }
 
-.detail-num span{
-	display:inline-block;
-	width:28px;
-	height:28px;
-	border:1px solid #ccc;
-	line-height:28px;
-	text-align:center;
-}
-.detail-num input{
-	display:inline-block;
-	width:28px;
-	height:28px;
-	line-height:normal;
-	margin:0;
-	padding:0;
-	border-radius:0;
-	border-left:none;
-	border-right:none;
-	vertical-align:top;
-	text-align:center;
+.num .selectNum {
+	padding-right: 10px;
 }
 
-.detail-buttons{
-	padding:10px;
+.num .selectNum span {
+	float: left;
+	width: 28px;
+	height: 28px;
+	border: 1px solid #ccc;
+	text-align: center;
+	line-height: 28px;
 }
 
-.detail-buttons *{
-	display:inline-block;
-	width:50%;
-	height:34px;
-	line-height:34px;
-	text-align:center;
-	color:#FFF;
+.num .selectNum input{
+	width: 28px;
+	height: 28px;
+	margin: 0;
+	padding: 0;
+	border-radius: 0;
+	float: left;
+	border-left: none;
+	border-right: none;
 }
 
-.detail-buttons span{
-	background:#991020;
+.btns {
+	padding: 10px;
+	overflow: hidden;
 }
 
-.detail-buttons a{
-	background:#fa672d;
+.btns a,
+.btns span {
+	float: left;
+	width: 50%;
+	height: 34px;
+	line-height: 34px;
+	text-align: center;
+	font-size: 14px;
+	color: #FFF;
+}
+
+.btns a{
+	background: #fa672d;
+}
+
+.btns span{
+	background: #991020;
 }
