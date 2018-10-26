@@ -8,7 +8,8 @@ $(function() {
         type: 'get',
         success: function(response) {
             var html = template('lef_data', response);
-            // console.log(response);
+            console.log(html);
+            console.log(response);
             $('#list-data').html(html);
             //第一个a加上active样式
             $('#list-data>a').eq(0).addClass('active');
@@ -34,6 +35,7 @@ $(function() {
             },
             success: function(response) {
                 var html = template('brand-data', response);
+                console.log(html);
                 $('#right-data').html(html);
             }
         });

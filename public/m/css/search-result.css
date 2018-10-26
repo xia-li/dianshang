@@ -1,0 +1,58 @@
+.mui-content {
+  background-color: #fff;
+  padding: 10px;
+}
+.mui-content > .mui-row {
+  margin-top: 10px;
+}
+.mui-content > .mui-row li {
+  text-align: center;
+  background-color: #efeff4;
+}
+.search-content {
+  padding: 10px;
+}
+.search-content > img {
+  width: 100%;
+}
+.search-content > ul {
+  padding: 0px;
+}
+.search-content > ul > li {
+  width: 50%;
+  float: left;
+  padding: 5px;
+  background-color: #fff;
+}
+.search-content > ul > li > a {
+  text-align: center;
+  display: block;
+  padding: 5px;
+  box-shadow: 0 0 5px #cccccc;
+}
+.search-content > ul > li > a > img {
+  width: 100%;
+}
+.search-content > ul > li > a > span {
+  display: block;
+  text-align: center;
+  padding: 6px;
+  font-size: 16px;
+  color: #8f8f94;
+}
+.search-content > ul > li > a > p {
+  font-size: 12px;
+  padding: 5px;
+  text-align: center;
+}
+.search-content > ul > li > a > p > span:first-of-type {
+  color: #f30;
+}
+.search-content > ul > li > a > p > span:last-of-type {
+  text-decoration: line-through;
+}
+.search-content > ul > li > a > button {
+  background: #006699;
+  color: white;
+}
+/*# sourceMappingURL=search-result.css.map */

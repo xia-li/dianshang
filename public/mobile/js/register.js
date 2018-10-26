@@ -1,101 +1,79 @@
+// 当HTML结构加载完成以后
 $(function(){
 
+	/**
+	 * 注册
+	 * 1.给注册按钮添加点击事件
+	 * 2.获取到用户注册的信息
+	 * 3.对用户输入的信息做验证
+	 * 4.调用注册接口 实现注册功能
+	 * 5.给出提示 告诉用户是否注册成功
+	 * 6.跳转到登录页面
+	 */
 
-	$('#regBtn').on('tap',function(){
+	$('#register-btn').on('click', function(){
 
-		var This = $(this);
+		var username = $('[name="username"]').val();
+		var mobile = $('[name="mobile"]').val();
+		var password = $('[name="password"]').val();
+		var againPass = $('[name="againPass"]').val();
+		var vCode = $('[name="vCode"]').val();
 
-		var data = {
-			username: $.trim($('[name="username"]').val()),
-			mobile:$.trim($('[name="mobile"]').val()),
-			password:$.trim($('[name="password"]').val()),
-			vCode:$.trim($('[name="checkCode"]').val())
-		}
-
-		var againPass = $.trim($('[name="againPass"]').val())
-
-		if(!data.username){
-
-			mui.toast('请输入用户名');
-
-			return;
-
-		}
-
-		if(!/^1[4578]\d{9}$/.test(data.mobile)){
-
-			mui.toast('请输入正确格式的手机号');
-
-			return;
-
-		}
-
-		if(!data.password){
-
-			mui.toast('请输入密码');
-
-			return;
-
-		}
-
-		if(!againPass){
-
-			mui.toast('请输入确认密码');
-
+		if(!username){
+			mui.toast("请输入用户名");
 			return;
 		}
 
-		if(data.password != againPass){
-
-			mui.toast('两次密码输入的不相同');
-
+		if(mobile.length < 11){
+			mui.toast("请输入合法的手机号");
 			return;
-
 		}
 
-		if(!/^\d{6}$/.test(data.vCode)){
-
-			mui.toast('验证码输入的格式不正确');
-
+		if(password != againPass){
+			mui.toast("两次输入的密码不一样");
 			return;
-
 		}
 
 		$.ajax({
-			type:'post',
-			url:'/user/register',
-			data:data,
-			beforeSend:function(){
-
-				This.html('正在提交数据...');
-
+			url: '/user/register',
+			type: 'post',
+			data: {
+				username: username,
+				password: password,
+				mobile: mobile,
+				vCode: vCode
 			},
-			success:function(result){
+			success: function(res){
+				alert("注册成功");
 
-				if(result.success){
-
-					mui.toast('注册成功');
-
-					setTimeout(function(){
-
-						location.href = "login.html";
-
-					},2000)
-					
-				}else{
-
-					mui.toast('注册失败');
-
-					This.html('注册');
-
-				}
+				setTimeout(function(){
+					location.href = "login.html";
+				}, 2000)
 			}
-		});
+		})
+
+
 
 	});
 
 
-	$('#getCode').on('tap',getCheckCode);
+	/**
+	 * 获取认证码
+	 * 1.给获取认证码按钮添加点击事件
+	 * 2.调用接口获取认证码
+	 * 3.将认证码输出到控制台
+	 */
+	
+	$('#getCode').on('click', function(){
 
+		$.ajax({
+			url: '/user/vCode',
+			type: 'get',
+			success: function(res){
+				console.log(res.vCode);
+			}
+		})
 
-});
+	});
+
+})

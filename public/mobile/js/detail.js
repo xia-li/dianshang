@@ -1,75 +1,71 @@
 $(function(){
 
-	var id = getParamsByUrl(location.href,'id');
-	var size = -1;
-	var num = 1;
-	var rest = 0;
+	// 库存数量
+	var kucunNum = 0;
+
+	// 尺码
+	var size = null;
+
+	// 产品ID
+	var id = getParamsByUrl(location.href, 'id');
+
+	var productId = 0;
 
 	$.ajax({
-		url:'/product/queryProductDetail',
-		type:'get',
-		data:{
-			id:id
+		url: '/product/queryProductDetail',
+		type: 'get',
+		data: {
+			id: id
 		},
-		success:function(result){
-			console.log(result)
-			if(!result.error){
+		success: function(res){
 
-				var size = result.size.split('-');
-				var start = parseInt(size[0]);
-				var end = parseInt(size[1]);
+			console.log(res);
 
-				rest = result.num;
+			// 库存数量
+			kucunNum = res.num;
 
-				result.size = [];
+			// 产品ID
+			productId = res.id;
 
-				for(var i=start;i<=end;i++){
+			var html = template("productTpl", res);
 
-					result.size.push(i);
+			$('#product-box').html(html);
 
-				}
+			//获得slider插件对象
+			var gallery = mui('.mui-slider');
+			gallery.slider();
 
-				$('#detailBox').html(template('detailTpl',{data:result}));
-
-				console.log(result)
-
-
-				var gallery = mui('.mui-slider');
-
-				gallery.slider();
-
-			}else{
-
-				alert(result.message);
-
-			}
-			
 		}
 	});
 
+	$('#product-box').on('tap', '.size span', function(){
 
-	$('body').on('tap','.detail-size span',function(){
+		$(this).addClass('active').siblings('span').removeClass('active');
 
-		$(this).addClass('active').siblings().removeClass('active');
-
+		// 用户选择的尺码
 		size = $(this).html();
 
 	});
 
+	var oInp = $('#inp');
 
-	$('body').on('tap','.plus',function(){
+	$('#increase').on('tap',function(){
+
+		var num = oInp.val()
 
 		num++;
 
-		if(num > rest){
-			num = rest;
+		if(num > kucunNum){
+			num = kucunNum;
 		}
 
-		$('.num').val(num);
+		oInp.val(num);
 
 	});
 
-	$('body').on('tap','.reduce',function(){
+	$('#reduce').on('tap', function(){
+
+		var num = oInp.val()
 
 		num--;
 
@@ -77,14 +73,21 @@ $(function(){
 			num = 1;
 		}
 
-		$('.num').val(num)
+		oInp.val(num);
 
 	});
 
+	/**
+	 * 加入购物车
+	 * 1.获取加入购物车按钮 并添加点击事件
+	 * 2.判断用户是否选择了尺码
+	 * 3.调用加入购物车接口
+	 * 4.提示用户 加入购物车成功 是否跳转到购物车页面
+	 */
 
-	$('#addCart').on('tap',function(){
+	$('#addCart').on('tap', function(){
 
-		if(size == -1){
+		if(!size){
 
 			alert('请选择尺码');
 
@@ -93,44 +96,33 @@ $(function(){
 		}
 
 		$.ajax({
-			type:'post',
-			url:'/cart/addCart',
-			data:{
-				productId:id,
-				num:num,
-				size:size
+			url: '/cart/addCart',
+			type: 'post',
+			data: {
+				productId: productId,
+				num: kucunNum,
+				size: size
 			},
-			success:function(result){
-				
-				if(result.error && result.error == 400){
+			success: function(res){
 
-					localStorage.returnUrl = location.href;
+				if(res.success){
 
-					location.href = "login.html";
+					mui.confirm("加入购物车成功,跳转到购物车?", function(message){
 
-				}
+						if(message.index){
 
-
-				if(result.success){
-
-					mui.confirm('添加成功,去购物车看看?','温馨提示',['确定','取消'],function(message){
-
-						if(message.index == 0){
-
+							// 跳转到购物车
 							location.href = "cart.html";
-
+							
 						}
-					}) 
+
+					})
 
 				}
+				
 			}
-		})
+		});
 
 	});
-
-
-
-
-
 
 });
