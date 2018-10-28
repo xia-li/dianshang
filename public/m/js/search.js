@@ -1,6 +1,6 @@
-$(function () {
+$(function() {
     var keyArray = [];
-    $('#search-btn').on('tap', function () {
+    $('#search-btn').on('tap', function() {
         var keyword = $(this).siblings('input').val().trim();
         if (keyword) {
             keyArray.unshift(keyword);
@@ -13,11 +13,13 @@ $(function () {
     if (localStorage.getItem('keyArray')) {
         keyArray = JSON.parse(localStorage.getItem('keyArray'));
         // console.log(keyArray);
-        var html = template('searchData', {list:keyArray});
+        var html = template('searchData', {
+            list: keyArray
+        });
         // console.log(html);
         $('#searchList').html(html)
     }
-    $('#clearHistory').on('tap',function () {
+    $('#clearHistory').on('tap', function() {
         keyArray = [];
         $('#searchList').html('');
         localStorage.removeItem('keyArray');
