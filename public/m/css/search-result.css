@@ -1,3 +1,9 @@
+#refreshContainer {
+  position: absolute;
+  left: 0;
+  top: 44px;
+  bottom: 50px;
+}
 .mui-content {
   background-color: #fff;
   padding: 10px;
@@ -8,6 +14,9 @@
 .mui-content > .mui-row li {
   text-align: center;
   background-color: #efeff4;
+}
+.mui-content > .mui-row li > span {
+  font-size: 14px;
 }
 .search-content {
   padding: 10px;
